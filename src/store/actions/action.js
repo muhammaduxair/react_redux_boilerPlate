@@ -14,3 +14,11 @@ export const Action2 = () => {
     dispatch({ type: "CHANGE_NAME", payload: res[0].name });
   };
 };
+
+export const apiAction = () => {
+  return async (dispatch) => {
+    const data = await fetch("https://api.covid19api.com/summary");
+    const res = await data.json();
+    dispatch({ type: "ADD_DATA", payload: res.Countries[127] });
+  };
+};
